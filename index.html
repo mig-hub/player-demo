@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Player Demo</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <style>
+      .wrap { position: relative; }
+      .play-pause { cursor: pointer; position: absolute; left: 0; bottom: 0; }
+
+      input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+        background: transparent;
+        margin: 0;
+        padding: 0;
+      }
+
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+
+        height: 40px;
+        width: 0;
+        border: 0;
+      }
+      input[type=range]::-moz-range-thumb {
+        height: 40px;
+        width: 0;
+        border: 0;
+      }
+      input[type=range]::-ms-thumb {
+        height: 40px;
+        width: 0;
+        border: 0;
+      }
+
+      input[type=range]:focus {
+        outline: none;
+      }
+
+      input[type=range]::-webkit-slider-runnable-track {
+        height: 40px;
+        width: 100%;
+        background-color: lightgray;
+      }
+      input[type=range]:focus::-webkit-slider-runnable-track {
+      }
+      input[type=range]::-moz-range-track {
+        height: 40px;
+        width: 100%;
+        background-color: lightgray;
+      }
+      input[type=range]::-ms-track {
+        width: 100%;
+        cursor: pointer;
+        background: transparent; 
+        border-color: transparent;
+        color: transparent;
+
+        height: 40px;
+        width: 100%;
+        background-color: lightgray;
+      }
+
+      .gauge {
+        position: absolute; left: 0; top: 0;
+        height: 40px;
+        background-color: tomato;
+        pointer-events: none;
+      }
+      .elapsed-time {
+        position: absolute;
+        left: 10%;
+        bottom: 0;
+      }
+      .total-time {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div id='app'>
+      <custom-player url='/song.mp3' playerid='player1'></custom-player>
+    </div>
+
+    <script type="text/x-template" id="custom-player-template">
+      <div class='custom-player'>
+        <audio style='display:none' ref='player' v-bind:id='playerid'>
+          <source v-bind:src='url' type='audio/mpeg' />
+        </audio>
+        <div class='wrap'>
+          <input v-model="playbackTime" type="range" min="0" v-bind:max="audioDuration" class="slider" name="position" />
+          <div class='gauge' v-bind:style='{width: gaugeWidth()}'></div>
+          <div class='play-pause' v-on:click='toggleAudio()'>
+            <span v-if='isPlaying'>PAUSE</span>
+            <span v-else>PLAY</span>
+          </div>
+          <div class="elapsed-time" v-html="elapsedTime()">00:00</div>
+          <div class="total-time" v-html="totalTime()">00:00</div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/javascript" src="/js/vue.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+  </body>
+</html>
+
