@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <style>
-      .wrap { position: relative; }
+      .wrap { position: relative; height: 40px; width: 100%; }
       .play-pause { cursor: pointer; position: absolute; left: 0; bottom: 0; }
 
       input[type=range] {
         -webkit-appearance: none;
         width: 100%;
+        height: 100%;
         background: transparent;
         margin: 0;
         padding: 0;
@@ -22,17 +23,17 @@
       input[type=range]::-webkit-slider-thumb {
         -webkit-appearance: none;
 
-        height: 40px;
+        height: 100%;
         width: 0;
         border: 0;
       }
       input[type=range]::-moz-range-thumb {
-        height: 40px;
+        height: 100%;
         width: 0;
         border: 0;
       }
       input[type=range]::-ms-thumb {
-        height: 40px;
+        height: 100%;
         width: 0;
         border: 0;
       }
@@ -42,14 +43,14 @@
       }
 
       input[type=range]::-webkit-slider-runnable-track {
-        height: 40px;
+        height: 100%;
         width: 100%;
         background-color: lightgray;
       }
       input[type=range]:focus::-webkit-slider-runnable-track {
       }
       input[type=range]::-moz-range-track {
-        height: 40px;
+        height: 100%;
         width: 100%;
         background-color: lightgray;
       }
@@ -60,14 +61,14 @@
         border-color: transparent;
         color: transparent;
 
-        height: 40px;
+        height: 100%;
         width: 100%;
         background-color: lightgray;
       }
 
       .gauge {
         position: absolute; left: 0; top: 0;
-        height: 40px;
+        height: 100%;
         background-color: tomato;
         pointer-events: none;
       }
